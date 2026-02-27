@@ -1,0 +1,18 @@
+# Blokir semua file PHP agar tidak bisa diakses langsung
+<FilesMatch "\.php$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Versi untuk Apache 2.4 ke atas
+<IfModule mod_authz_core.c>
+    <FilesMatch "\.php$">
+        Require all denied
+    </FilesMatch>
+</IfModule>
+
+# Hanya izinkan file gambar yang umum diakses
+<FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
